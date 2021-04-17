@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="WpfPhoneBook.ccnPhoneBook.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0-preview.1.21102.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-preview.1.21102.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0-preview.1.21102.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Context\WpfPhoneBook.ccnPhoneBook.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Context</DependentUpon>
+    </Compile>
+    <Compile Update="Models\WpfPhoneBook.City.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Models</DependentUpon>
+    </Compile>
+    <Compile Update="Models\WpfPhoneBook.Number.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Models</DependentUpon>
+    </Compile>
+    <Compile Update="Models\WpfPhoneBook.Person.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Models</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="WpfPhoneBook.Diagram1.view">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WpfPhoneBook.efml</DependentUpon>
+    </None>
+    <None Update="WpfPhoneBook.edps">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WpfPhoneBook.efml</DependentUpon>
+    </None>
+    <None Update="WpfPhoneBook.efml">
+      <Generator>DevartEFCoreGenerator</Generator>
+      <LastGenOutput>WpfPhoneBook.info</LastGenOutput>
+    </None>
+    <None Update="WpfPhoneBook.info">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WpfPhoneBook.efml</DependentUpon>
+    </None>
+  </ItemGroup>
+
+</Project>
